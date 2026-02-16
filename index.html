@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CardPilot | Credit Card Strategy</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-layer" aria-hidden="true"></div>
+
+    <main class="app-shell">
+      <header class="hero">
+        <p class="eyebrow">CardPilot</p>
+        <h1>Credit Card Strategy Dashboard</h1>
+        <p class="hero-copy">
+          Track spend, optimize category swipes, and plan annual fees with automatic
+          30-day reminders.
+        </p>
+      </header>
+
+      <section class="summary-grid" id="summaryGrid">
+        <article class="stat-card">
+          <p class="stat-label">Monthly Spend</p>
+          <p class="stat-value" id="summarySpend">$0</p>
+        </article>
+        <article class="stat-card">
+          <p class="stat-label">Optimized Monthly Points</p>
+          <p class="stat-value" id="summaryOptimizedPoints">0</p>
+        </article>
+        <article class="stat-card">
+          <p class="stat-label">Optimized Annual Value</p>
+          <p class="stat-value" id="summaryOptimizedValue">$0</p>
+        </article>
+        <article class="stat-card">
+          <p class="stat-label">Best Single Card Net (Annual)</p>
+          <p class="stat-value" id="summaryBestSingleCard">N/A</p>
+        </article>
+      </section>
+
+      <section class="panel controls-panel">
+        <h2>Settings</h2>
+        <div class="controls-grid">
+          <label class="control-field" for="pointValueInput">
+            Point Value (cents)
+            <input id="pointValueInput" type="number" min="0.1" step="0.1" />
+          </label>
+          <label class="control-field" for="stradaWeekendDiningPctInput">
+            Strada Fri/Sat Dining (%)
+            <input id="stradaWeekendDiningPctInput" type="number" min="0" max="100" step="1" />
+          </label>
+          <button id="resetSpendBtn" class="btn-secondary" type="button">Reset Spend</button>
+          <button id="resetAllBtn" class="btn-danger" type="button">Reset All Data</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Monthly Spend Profile ($)</h2>
+        <div id="spendGrid" class="spend-grid"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Best Card by Category</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Spend</th>
+                <th>Best Card</th>
+                <th>Multiplier</th>
+                <th>Monthly Points</th>
+                <th>Monthly Value</th>
+              </tr>
+            </thead>
+            <tbody id="bestCardTable"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Card Performance (Active Cards)</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Card</th>
+                <th>Monthly Points</th>
+                <th>Annual Points</th>
+                <th>Annual Value</th>
+                <th>Annual Fee</th>
+                <th>Net Annual Value</th>
+              </tr>
+            </thead>
+            <tbody id="cardTotalsTable"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Annual Fee Tracker</h2>
+        <p class="note">
+          Set each card's next annual fee date. Alerts appear when a fee is due in
+          30 days or less.
+        </p>
+        <ul id="feeWarnings" class="warning-list"></ul>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Use</th>
+                <th>Card</th>
+                <th>Annual Fee</th>
+                <th>Due Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="annualFeeTable"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Card Multipliers Included</h2>
+        <p class="note">
+          Baseline multipliers only. This does not include every issuer cap, portal,
+          or promo condition.
+        </p>
+        <div id="cardsList" class="cards-list"></div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
